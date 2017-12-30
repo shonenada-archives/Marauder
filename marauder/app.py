@@ -12,6 +12,7 @@ from marauder.view.name import Names
 from marauder.view.home import HomeView
 from marauder.view.signin import SignInView
 from marauder.view.hello import HelloView
+from marauder.view.tip import TipView
 
 
 def create_scene(screen, store, cls, name):
@@ -29,6 +30,8 @@ def marauder(screen, scene):
         Scene(HomeView, Names.HomeView),
         Scene(SignInView, Names.SignInView),
         Scene(HelloView, Names.HelloView),
+
+        Scene(TipView, Names.TipView),
     ]
     screen.play(scenes, stop_on_resize=True, start_scene=scene)
 
