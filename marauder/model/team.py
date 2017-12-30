@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from marauder.model.base import Base
+from marauder.model.base import Model
 
 
-class Team(Base):
+class Team(Model):
 
     fields = ('id', 'name', 'subdomain')
