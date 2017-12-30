@@ -7,6 +7,7 @@ from asciimatics.scene import Scene
 from asciimatics.screen import Screen
 from asciimatics.exceptions import ResizeScreenError
 
+from marauder.client import Client
 from marauder.view.name import Names
 from marauder.view.home import HomeView
 from marauder.view.signin import SignInView
@@ -22,8 +23,8 @@ def create_scene(screen, store, cls, name):
 
 
 def marauder(screen, scene):
-    store = {}
-    Scene = partial(create_scene, screen, store)
+    client = Client()
+    Scene = partial(create_scene, screen, client)
     scenes = [
         Scene(HomeView, Names.HomeView),
         Scene(SignInView, Names.SignInView),

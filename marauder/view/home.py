@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 
 from asciimatics.exceptions import NextScene
-from asciimatics.widgets import Frame, Layout, Label, Text, Button
+from asciimatics.widgets import Frame, Layout, Text, Button
 
 from marauder.error import MarauderError
-from marauder.service.team import get_team
 from marauder.view.utils import get_screen_size, exit_normally
 from marauder.view.name import Names
 
 
 class HomeView(Frame):
 
-    def __init__(self, screen, store):
+    def __init__(self, screen, client):
         title = 'Login BearyChat'
         height, width = get_screen_size(screen)
         super(HomeView, self).__init__(
             screen, height, width, hover_focus=True, title=title)
         self.setup_layout()
 
-        self.store = store
+        self.client = client
 
     def setup_layout(self):
         team_text = Text('Team Subdomain:', 'team_subdomain')
@@ -38,6 +37,5 @@ class HomeView(Frame):
         team_data = get_team(subdomain)
         if team_data is None:
             raise MarauderError('Team %s not Found' % subdomain)
-        self.store['team'] = team_data
 
         raise NextScene(Names.SignInView)
