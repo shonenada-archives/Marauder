@@ -5,3 +5,5 @@ class Names(object):
     HomeView = 'Home'
     SignInView = 'Signin'
     HelloView = 'Hello'
+
+    TipView = 'Tip'

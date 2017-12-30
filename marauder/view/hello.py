@@ -7,14 +7,14 @@ from marauder.view.utils import get_screen_size
 
 class HelloView(Frame):
 
-    def __init__(self, screen, store):
+    def __init__(self, screen, client):
         title = 'Hello'
         height, width = get_screen_size(screen)
         super(HelloView, self).__init__(
             screen, height, width, hover_focus=True, title=title)
         self.setup_layout()
 
-        self.store = store
+        self.client = client
 
     def setup_layout(self):
         label = Label('Hello')
@@ -25,5 +25,5 @@ class HelloView(Frame):
 
     def reset(self):
         super(HelloView, self).reset()
-        self.title = 'Hello %s' % self.store.get('user', {}).get('name')
+        self.title = 'Hello %s' % self.client.store.current_user.name
         self.fix()

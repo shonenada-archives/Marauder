@@ -34,7 +34,7 @@ class HomeView(Frame):
     def do_signin_team(self):
         self.save()
         subdomain = self.data['team_subdomain']
-        team_data = get_team(subdomain)
+        team_data = self.client.get_team(subdomain)
         if team_data is None:
             raise MarauderError('Team %s not Found' % subdomain)
 
