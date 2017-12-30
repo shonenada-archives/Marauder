@@ -2,10 +2,7 @@
 
 import requests
 
-
 rqs = requests.Session()
-
-
 DEFAULT_SCHEME = 'https'
 DEFAULT_BASE_URL = 'bearychat.com'
 
@@ -19,12 +16,12 @@ def handle_response(response):
     if response.status_code == 200:
         data = response.json()
         if data['code'] == 0:
-            return data['result']
+            return True, data['result']
         else:
-            return data['error']
+            return False, data['error']
     else:
         try:
             data = response.json()
-            return data['error']
+            return False, data['error']
         except Exception:
-            return None
+            return False, None
